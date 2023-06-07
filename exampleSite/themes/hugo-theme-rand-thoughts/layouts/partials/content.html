@@ -1,0 +1,116 @@
+{{ $paginator := .Paginate  ( where .Site.RegularPages  "Type" "in" site.Params.mainSections) }}
+<div id="main" class="main">
+  
+  <div>
+    <div>{{ range  $paginator.Pages  }}
+      <div>
+         {{ if not .Params.hidden }}
+        <div class="user-info">
+          <div class="avatar-block">
+            <a href="{{ .Site.Params.avatarLink }}" style="text-decoration: none;cursor: pointer;">
+              <img src="{{ .Site.Params.avatar | absURL}} " class="avatar"></a>
+          </div>
+          <div class="intro">
+            <div class="name">{{ .Site.Params.username }}</div>
+            <div>
+              <span class="tag text-muted">{{ .Date.Format "2006-01-02" }}</span>
+              <!-- <span class="tag text-muted">
+              · No.
+              </span> -->
+            </div>
+          </div>
+        </div>
+        <div class="content-item">
+          <div>
+            <div  style="padding-bottom:5px">{{ .Content}}</div>
+          </div>
+          {{ $content := .Content }}
+            {{ $videoPoster := .Site.Params.videoPoster }}
+          <div class="pic-group" style="display: flex;flex-wrap: wrap;align-content: center;"> {{ if .Params.images }} {{ $content := .Content }} {{ $imageCount := (len .Params.images) }} {{ $zip := .Site.Params.zipImg }} {{ range .Params.images }}
+            <div class="pic-group-in">
+              <a class="fancybox" rel="group" href="{{ . }}" data-fancybox="group" data-caption="{{ $content }}">{{ if eq $imageCount 1 }}
+                <img src="{{ . }}{{ $zip }}" class="single-pic" />{{ else }}
+                <img src="{{ . }}{{ $zip }}" class="pic" />{{ end }}</a>
+            </div>{{ end }} {{ end }} {{ if .Params.videos }} {{ $videoCount := (len .Params.videos) }} {{ range .Params.videos }}
+            <div class="pic-group-in">
+              <a class="fancybox" rel="group" href="{{ . }}" data-fancybox="group" data-caption="{{ $content }}">{{ if eq $videoCount 1 }}
+                <video preload="metadata" poster="{{$videoPoster}}" src="{{ . }}" class="single-pic"></video>{{ else }}
+                <video preload="metadata" poster="{{$videoPoster}}" src="{{ . }}" class="pic"></video>{{ end }}</a>
+            </div>{{ end }} {{ end }}</div>
+
+
+            {{ if .Params.music }} 
+            {{ range .Params.music }}
+          <div>
+              <div style="margin-left:-6px">
+                <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% style="max-width: 300px;" height=86 src="//music.163.com/outchain/player?type=2&id={{ . }}&auto=0&height=66">
+                </iframe>
+              </div>
+          </div>
+          {{ end }}
+          {{ end }}
+
+
+          <div class="tag" style="display:flex;justify-content: space-between;flex-wrap: wrap;margin-top:10px">
+            <span class="location">{{ .Params.location}}</span>
+            <span>{{ range .Params.tags}}
+              <span>#{{ . }} &nbsp;</span>{{ end }}
+              {{ if .Site.Params.artalk.enable }}
+              <span>
+                <a href='{{ .Permalink }}?id={{ .Date.Format "2006-01-02-15-04-05" }}' class="header-nav-ul-li-a2">评论</a>
+              </span>
+              {{ end }}
+            </span>
+          </div>
+          <!-- <hr><div class="tag" style="display:flex;justify-content: space-between;"><span><a class="header-nav-ul-li-a3"><s>转发</s></a></span><span><a class="header-nav-ul-li-a2">评论</a></span><span><a class="header-nav-ul-li-a3"><s>点赞</s></a></span></div> -->
+          <!-- <div class="tag" style="display:flex;justify-content: flex-end;"><span><a :href="'comment.html?comment_id='+obj.id" class="header-nav-ul-li-a2">评论</a></span>&nbsp;&nbsp;</div> -->
+        </div>
+        <hr style="margin-top:10px;margin-bottom: 15px;">{{ else }}
+        <div class="user-info">
+          <div class="avatar-block">
+            <a href="{{ .Site.Params.avatarLink }}" style="text-decoration: none;cursor: pointer;">
+              <img src="{{ .Site.Params.avatar | absURL}} " class="avatar"></a>
+          </div>
+          <div class="intro">
+            <div class="name">{{ .Site.Params.username }}</div>
+            <div>
+              <span class="tag text-muted">{{ .Date.Format "2006-01-02" }}</span>
+              <!-- <span class="tag text-muted">
+              · No.111
+              </span> -->
+            </div>
+          </div>
+        </div>
+        <div class="content-item">
+          <div>
+            <p>
+              <div class="text" style="padding-bottom:5px;color: #b0b0b0;">** 该条已隐藏 **</div>
+            </p>
+          </div>
+        </div>
+        <hr style="margin-top:15px;margin-bottom: 15px;">{{ end }} 
+      </div>{{ end }}
+    </div>
+  </div>
+</div>
+
+<div class="foot-menu" >
+   <!--  <button id="buton" @click="load" class="loadbtn">
+        加载更多
+    </button> -->
+<div class="pagination" style="text-align:center;">
+    {{ if or ($paginator.HasPrev) ($paginator.HasNext) }}
+    {{ if $paginator.HasPrev }}
+    <a href="{{$paginator.Prev.URL}}" style="text-align:center;border: 0px;font-size: 12px;">
+        上一页
+    </a>
+    {{ end }}
+     <span>&nbsp;</span>
+    {{ if $paginator.HasNext }}
+    <a href="{{$paginator.Next.URL}}"  style="text-align:center;border: 0px;font-size: 12px;">
+     下一页
+    </a>
+    {{ end }}
+    {{ end }}
+</div>
+</div>

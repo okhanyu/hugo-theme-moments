@@ -1,0 +1,71 @@
+baseURL = "http://localhost:1313" # 网址
+languageCode = "en-us"
+title = "朋友圈" # 网站标题
+theme = "hugo-theme-rand-thoughts"
+
+paginate = 10   # 每页显示数量
+
+
+[params]
+  topImg = "img/bg.png"  # 顶部背景图
+  avatar = "img/avatar.png" # 头像
+  username = "昵称" # 昵称
+  desc = "我是描述" # 描述
+  zipImg= "" # 图片的预览压缩参数
+  avatarLink = "" # 头像点击后的跳转地址
+  mainSections = ["posts"]
+  customCss = ["https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css","https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.css","css/style.css"]
+  customJs = ["js/jquery.min.js","https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"]
+  videoPoster = ""
+  description = ""
+  keywords = ""
+  favicon = "img/favicon.ico"
+
+[[menu.main]]                          
+  name = "Home"
+  weight = 10
+  identifier = "home"
+  url = "/"
+[[menu.main]]
+  name = "About"
+  weight = 20
+  identifier = "about"
+  url = "/about/"
+
+[params.artalk]
+  enable = false   # 评论是否开启
+  js = ""
+  css = ""
+  el =  'Comments'              # 绑定元素的 Selector
+  pageKey =  ''                  # 固定链接 (留空自动获取)
+  pageTitle = ''  # 页面标题 (留空自动获取)
+  server =    '' # 后端地址，带上协议
+  site =    ''            # 你的站点名
+
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.62.0"
+
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+  unsafe = true
+
+[permalinks]
+  posts = "/posts/:filename"
+  hidden = "/posts/:filename"
+  pages = "/posts/:filename"
+
+[taxonomies]
+  tag = "tags"
+  categories = "categories"
+
+[outputs]
+    home = [ "HTML", "RSS"]
+
+
+
+
+

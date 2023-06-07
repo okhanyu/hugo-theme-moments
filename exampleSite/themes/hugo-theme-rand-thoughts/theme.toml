@@ -1,0 +1,21 @@
+name = "Rand-Thoughts"
+license = "MIT"
+licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE"
+description = "A simple Hugo theme that expresses random thoughts and micro idea."
+homepage = "https://hanyu.life/moments/"
+demosite = "https://hanyu.life/moments/"
+tags = [  
+  "blog",
+  "clean",
+  "responsive",
+  "thoughts",
+  "micro",
+  "theme"
+]
+features = []
+min_version = "0.41.0"
+
+[author]
+  name = "HanYu"
+  homepage = "https://hanyu.life"
+

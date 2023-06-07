@@ -1,0 +1,16 @@
+
+<!-- CSS -->
+<link href="{{ .Site.Params.artalk.css }}" rel="stylesheet">
+<!-- JS -->
+<script src="{{ .Site.Params.artalk.js }}"></script>
+<!-- Artalk -->
+<div id="{{ .Site.Params.artalk.el }}"></div>
+<script>
+Artalk.init({
+  el:        '#{{ .Site.Params.artalk.el }}',                // 绑定元素的 Selector
+  pageKey:   '{{ .Site.Params.artalk.pageKey }}',                  // 固定链接 (留空自动获取)
+  pageTitle: '{{ .Site.Params.artalk.pageTitle }}',  // 页面标题 (留空自动获取)
+  server:    '{{ .Site.Params.artalk.server }}',  // 后端地址
+  site:      '{{ .Site.Params.artalk.site }}',             // 你的站点名
+})
+</script>

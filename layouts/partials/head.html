@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="referrer" content="strict-origin">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,viewport-fit=cover,shrink-to-fit=no">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="description" content="{{.Site.Params.description}}">
+        <meta name="keywords" content="{{.Site.Params.keywords}}">
+        <title>
+            {{.Site.Title}}
+        </title>
+        <link rel="shortcut icon" type="image/x-icon" href="{{.Site.Params.favicon | absURL}}"/> 
+        <link rel="icon" type="image/x-icon" href="{{.Site.Params.favicon | absURL}}">
+
+        {{ range .Site.Params.customCss}}
+         <link href="{{. | absURL}}" type="text/css" rel="stylesheet" />
+        {{ end }}
+    
+</head>

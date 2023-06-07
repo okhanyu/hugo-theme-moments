@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    {{- partial "head.html" . -}}
+        <body style="overflow: auto;" id="top">
+        <div id="app">
+        {{- partial "header.html" . -}}
+        
+<div id="main" class="main">
+    <div>
+        {{ .Content }}
+        <hr style="margin-top:15px;margin-bottom: 15px;">
+  </div>
+   {{- partial "comments-detail.html" . -}}
+</div>
+    
+        {{- partial "footer.html" . -}}
+        </div>
+         {{- partial "js.html" . -}}
+    </body>
+</html>

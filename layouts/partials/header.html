@@ -1,0 +1,34 @@
+<header>
+    <div  class="topimage" style="position: relative; background-image: url('{{ .Site.Params.topImg | absURL}}');">
+        <div class="user_info">
+            <div class="top">
+                <div class="left">
+                    <div class="name">
+                       {{ .Site.Params.username }}
+                    </div>
+                    <div class="des">
+                        <span id="jinrishici-sentence" style="color: #fff;font-size:14px">
+                           {{ .Site.Params.desc }}
+                        </span>
+                    </div>
+                </div>
+                <div class="avatar">
+                    <a  href="{{ .Site.Params.avatarLink }}" style="text-decoration: none;cursor: pointer;"><img src="{{ .Site.Params.avatar | absURL}}"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="text nav">
+        <strong>
+        </ul>
+            <ul class="header-nav-ul">
+                  {{ range.Site.Menus.main }}
+                <li class="header-nav-ul-li" >
+                    <a class="header-nav-ul-li-a" href="{{ .URL | safeURL }}">{{ .Name }}</a>
+                </li>
+                 {{ end }}
+            </ul>
+        </strong>
+    </nav>
+</header>
+<hr  style="margin-top:2px;margin-bottom: 15px;">

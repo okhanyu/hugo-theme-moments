@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    {{- partial "head.html" . -}}
+        <body style="overflow: auto;" id="top">
+        <div id="app">
+        {{- partial "header.html" . -}}
+        
+            {{- block "main" . }}{{- end }}
+        
+        {{- partial "footer.html" . -}}
+        </div>
+         {{- partial "js.html" . -}}
+    </body>
+</html>
